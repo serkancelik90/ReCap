@@ -8,5 +8,9 @@ namespace ReCap.Business.Abstract
     public interface ICarService
     {
         List<Car> GetAll();
+        void Delete(int id);
+        List<Car> GetCarsByBrandId(int brandId);
+        List<Car> GetCarsByColorId(int colorId);
+        void Add(Car car);
     }
 }

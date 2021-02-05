@@ -14,9 +14,31 @@ namespace ReCap.Business.Concrete
         {
             _carDal = carDal;
         }
+
+        public void Add(Car car)
+        {
+            _carDal.Add(car);
+        }
+
+        public void Delete(int id)
+        {
+            var deletedCar = _carDal.Get(x => x.CarId == id);
+            _carDal.Delete(deletedCar);
+        }
+
         public List<Car> GetAll()
         {
-           return _carDal.GetAll();
+            return _carDal.GetAll();
+        }
+
+        public List<Car> GetCarsByBrandId(int brandId)
+        {
+            return _carDal.GetAll(x => x.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(x => x.ColorId == colorId);
         }
     }
 }

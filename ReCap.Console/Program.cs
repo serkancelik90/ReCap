@@ -1,4 +1,5 @@
 ﻿using ReCap.Business.Concrete;
+using ReCap.DataAccess.Concrete.EntityFramework;
 using ReCap.DataAccess.Concrete.InMemory;
 using System;
 
@@ -8,11 +9,11 @@ namespace ReCap.ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
             var list = carManager.GetAll();
             foreach (var item in list)
             {
-                Console.WriteLine(item.CarId);
+                Console.WriteLine(item.ModelYear);
             }
 
         }
