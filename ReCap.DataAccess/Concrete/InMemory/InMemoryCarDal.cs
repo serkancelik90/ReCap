@@ -1,12 +1,4 @@
-﻿using ReCap.DataAccess.Abstract;
-using ReCap.Entities.Abstract;
-using ReCap.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ReCap.DataAccess.Concrete.InMemory
+﻿namespace ReCap.DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal //:ICarDal
     {

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ReCap.DataAccess.Concrete.EntityFramework
 {
-    public class EfBrandDal: EntityRepository<Brand>, IBrandDal
+    public class EfBrandDal: EfEntityRepositoryBase<Brand,RentACarContext>, IBrandDal
     {
 
     }

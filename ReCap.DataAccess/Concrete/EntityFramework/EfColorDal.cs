@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ReCap.DataAccess.Concrete.EntityFramework
 {
-    public class EfColorDal : EntityRepository<Color>, IColorDal
+    public class EfColorDal : EfEntityRepositoryBase<Color, RentACarContext>, IColorDal
     {
        
     }

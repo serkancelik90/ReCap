@@ -10,10 +10,10 @@ namespace ReCap.ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            var list = carManager.GetAll();
+            var list = carManager.GetCarDetails();
             foreach (var item in list)
             {
-                Console.WriteLine(item.ModelYear);
+                Console.WriteLine(item.BrandName + " " + item.CarName);
             }
 
         }

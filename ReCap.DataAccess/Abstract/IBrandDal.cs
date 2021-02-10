@@ -1,7 +1,5 @@
-﻿using ReCap.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Core.DataAccess;
+using ReCap.Entities.Concrete;
 
 namespace ReCap.DataAccess.Abstract
 {
