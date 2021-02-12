@@ -1,6 +1,7 @@
 ﻿using ReCap.Business.Concrete;
 using ReCap.DataAccess.Concrete.EntityFramework;
 using ReCap.DataAccess.Concrete.InMemory;
+using ReCap.Entities.Concrete;
 using System;
 
 namespace ReCap.ConsoleUI
@@ -9,13 +10,19 @@ namespace ReCap.ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            var list = carManager.GetCarDetails();
-            foreach (var item in list)
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Console.WriteLine("Bilgilerinizi giriniz");
+            
+            Rental rental = new Rental
             {
-                Console.WriteLine(item.BrandName + " " + item.CarName);
-            }
+                CarId = 1,
+                CustomerId = 2,
+                RentDate = DateTime.Now,
+                //ReturnTime = DateTime.Now.AddDays(1)
+            };
 
+            var result = rentalManager.Rent(rental);
+            Console.WriteLine(result.Message);
         }
     }
 }

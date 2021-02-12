@@ -1,4 +1,5 @@
-﻿using ReCap.Entities.Concrete;
+﻿using Core.Utilities.Results;
+using ReCap.Entities.Concrete;
 using ReCap.Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ namespace ReCap.Business.Abstract
 {
     public interface ICarService
     {
-        List<Car> GetAll();
-        void Delete(int id);
-        List<Car> GetCarsByBrandId(int brandId);
-        List<Car> GetCarsByColorId(int colorId);
-        void Add(Car car);
-        List<CarDetailDto> GetCarDetails();
+        IDataResult<List<Car>> GetAll();
+        IResult Delete(int id);
+        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
+        IDataResult<List<Car>> GetCarsByColorId(int colorId);
+        IResult Add(Car car);
+        IDataResult<List<CarDetailDto>> GetCarDetails();
     }
 }

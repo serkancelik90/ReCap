@@ -1,10 +1,10 @@
-﻿using ReCap.Business.Abstract;
+﻿using Core.Utilities.Results;
+using ReCap.Business.Abstract;
+using ReCap.Business.Constants;
 using ReCap.DataAccess.Abstract;
 using ReCap.Entities.Concrete;
 using ReCap.Entities.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ReCap.Business.Concrete
 {
@@ -16,35 +16,38 @@ namespace ReCap.Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             _carDal.Add(car);
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(int id)
+        public IResult Delete(int id)
         {
             var deletedCar = _carDal.Get(x => x.CarId == id);
             _carDal.Delete(deletedCar);
+
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>( _carDal.GetAll(),Messages.CarsListed);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarsListed);
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll(x => x.BrandId == brandId);
+            return new SuccessDataResult<List<Car>>( _carDal.GetAll(x => x.BrandId == brandId),Messages.CarsListed);
         }
 
-        public List<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(x => x.ColorId == colorId);
+            return new SuccessDataResult<List<Car>>( _carDal.GetAll(x => x.ColorId == colorId),Messages.CarsListed);
         }
     }
 }
