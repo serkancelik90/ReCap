@@ -10,9 +10,7 @@ namespace ReCap.ConsoleUI
     {
         static void Main(string[] args)
         {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            Console.WriteLine("Bilgilerinizi giriniz");
-            
+            RentalManager rentalManager = new RentalManager(new EfRentalDal()); 
             Rental rental = new Rental
             {
                 CarId = 1,

@@ -4,6 +4,7 @@ using ReCap.Business.Constants;
 using ReCap.DataAccess.Abstract;
 using ReCap.Entities.Concrete;
 using ReCap.Entities.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace ReCap.Business.Concrete
@@ -32,7 +33,16 @@ namespace ReCap.Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>( _carDal.GetAll(),Messages.CarsListed);
+            try
+            {
+                var cars = _carDal.GetAll();
+                return new SuccessDataResult<List<Car>>(cars, Messages.CarsListed);
+            }
+            catch (Exception ex)
+            {
+                return new ErrorDataResult<List<Car>>(ex.Message);
+            }
+
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

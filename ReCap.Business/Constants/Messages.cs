@@ -14,5 +14,10 @@ namespace ReCap.Business.Constants
         public static string CustomerAdded = "Müşteri eklendi";
         public static string CarInUse = "Araba kirada";
         public static string CarRentable = "Araç kiralandı";
+        public static string UserAdded = "Araç eklendi";
+        public static string UserDeleted = "Araç silindi";
+        public static string UserListed = "Araçlar listelendi";
+
+
     }
 }
