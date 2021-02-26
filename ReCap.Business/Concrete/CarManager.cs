@@ -1,6 +1,10 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttinConcerns.Validation;
+using Core.Utilities.Results;
+using FluentValidation;
 using ReCap.Business.Abstract;
 using ReCap.Business.Constants;
+using ReCap.Business.ValidationRules.FluentValidation;
 using ReCap.DataAccess.Abstract;
 using ReCap.Entities.Concrete;
 using ReCap.Entities.DTOs;
@@ -17,8 +21,10 @@ namespace ReCap.Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            //ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }

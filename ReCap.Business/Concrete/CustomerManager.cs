@@ -1,6 +1,8 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Results;
 using ReCap.Business.Abstract;
 using ReCap.Business.Constants;
+using ReCap.Business.ValidationRules.FluentValidation;
 using ReCap.DataAccess.Abstract;
 using ReCap.Entities.Concrete;
 using System;
@@ -16,6 +18,7 @@ namespace ReCap.Business.Concrete
         {
             _customerDal = customerDal;
         }
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult AddCustomer(Customer customer)
         {
             _customerDal.Add(customer);
