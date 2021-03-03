@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCap.Business.Abstract;
 using ReCap.Entities.Concrete;
@@ -21,33 +22,12 @@ namespace ReCarp.WebAPI.Controllers
         [HttpPost("adduser")]
         public IActionResult AddUser(User user)
         {
-           var result = _userService.AddUser(user);
+            var result = _userService.Add(user);
             if (result.Success == true)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-        [HttpPost("deleteuser")]
-        public IActionResult DeleteUser(User user)
-        {
-            var result = _userService.DeleteUser(user);
-            if (result.Success == true)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-        [HttpGet("getusers")]
-        public IActionResult GetUsers()
-        {
-            var result = _userService.GetAll();
-            if (result.Success == true)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
     }
 }

@@ -3,6 +3,7 @@ using Core.CrossCuttinConcerns.Validation;
 using Core.Utilities.Results;
 using FluentValidation;
 using ReCap.Business.Abstract;
+using ReCap.Business.BusinessAspects.Autofac;
 using ReCap.Business.Constants;
 using ReCap.Business.ValidationRules.FluentValidation;
 using ReCap.DataAccess.Abstract;
@@ -21,6 +22,7 @@ namespace ReCap.Business.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {

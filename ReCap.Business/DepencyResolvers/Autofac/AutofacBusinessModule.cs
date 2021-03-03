@@ -2,6 +2,7 @@
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using ReCap.Business.Abstract;
 using ReCap.Business.Concrete;
 using ReCap.DataAccess.Abstract;
@@ -22,6 +23,11 @@ namespace ReCap.Business.DepencyResolvers.Autofac
             builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

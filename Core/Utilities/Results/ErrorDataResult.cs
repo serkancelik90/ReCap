@@ -18,7 +18,7 @@ namespace Core.Utilities.Results
         {
                 
         }
-        public ErrorDataResult():base(default,false)
+        public ErrorDataResult(Entities.Concrete.User userNotFound) :base(default,false)
         {
 
         }

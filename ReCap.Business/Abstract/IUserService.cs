@@ -1,5 +1,5 @@
-﻿using Core.Utilities.Results;
-using ReCap.Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +8,8 @@ namespace ReCap.Business.Abstract
 {
     public interface IUserService
     {
-        IDataResult<List<User>> GetAll();
-        IResult AddUser(User user);
-        IResult DeleteUser(User user);
+        List<OperationClaim> GetClaims(User user);
+       void Add(User user);
+       User GetByMail(string email);
     }
 }
