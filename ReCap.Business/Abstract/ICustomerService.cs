@@ -9,5 +9,8 @@ namespace ReCap.Business.Abstract
    public interface ICustomerService
     {
         IResult AddCustomer(Customer customer);
+        IResult DeleteCustomer(int customerId);
+        IDataResult<List<Customer>> GetAll();
+        IDataResult<Customer> Get(int customerId);
     }
 }

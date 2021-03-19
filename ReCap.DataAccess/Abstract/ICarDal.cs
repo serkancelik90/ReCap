@@ -7,6 +7,9 @@ namespace ReCap.DataAccess.Abstract
 {
     public interface ICarDal : IEntityRepository<Car>
     {
-        List<CarDetailDto> GetCarDetails();
+        List<CarDetailDto> GetCarsDetails();
+        List<CarDetailDto> GetCarsDetailsByColor(int colorId);
+        List<CarDetailDto> GetCarsDetailsByBrand(int brandId);
+        CarDetailDto GetCarDetails(int carId);
     }
 }

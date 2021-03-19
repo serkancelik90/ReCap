@@ -48,10 +48,40 @@ namespace ReCarp.WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getcardetails")]
-        public IActionResult GetCarDetails()
+        [HttpGet("getcarsdetails")]
+        public IActionResult GetCarsDetails()
         {
-            var result = _carService.GetCarDetails();
+            var result = _carService.GetCarsDetails();
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getcarsbybrandid")]
+        public IActionResult GetCarsByBrandId(int brandId)
+        {
+            var result = _carService.GetCarsByBrandId(brandId);
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getcarsbycolorid")]
+        public IActionResult GetCarsByColorId(int colorId)
+        {
+            var result = _carService.GetCarsByColorId(colorId);
+            if (result.Success == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getcardetails")]
+        public IActionResult GetCarDetails(int carId)
+        {
+            var result = _carService.GetCarDetails(carId);
             if (result.Success == true)
             {
                 return Ok(result);

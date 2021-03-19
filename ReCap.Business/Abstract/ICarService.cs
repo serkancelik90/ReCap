@@ -11,9 +11,12 @@ namespace ReCap.Business.Abstract
     {
         IDataResult<List<Car>> GetAll();
         IResult Delete(int id);
-        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
-        IDataResult<List<Car>> GetCarsByColorId(int colorId);
+        IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId);
+        IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId);
         IResult Add(Car car);
-        IDataResult<List<CarDetailDto>> GetCarDetails();
+        IDataResult<List<CarDetailDto>> GetCarsDetails();
+        IDataResult<CarDetailDto> GetCarDetails(int carId);
+        IResult AddTransactionalTest(Car car);
+        
     }
 }
